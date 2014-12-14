@@ -30,6 +30,37 @@ var currentState;
 var states = {
     Splash: 0, Game: 1, End: 2,
 };
+    
+var player = {
+    x: null,
+    y: null,
+    width: 20,
+    height: 20,
+    var keyPressed = String.fromCharCode(event.keyCode):
+    
+    if (keyPressed == "W"){	
+        player.x = 1;
+    }
+    else if (keyPressed == "D"){	
+        player.x = -1;	
+    }
+    else if (keyPressed == "S"){	
+        player.y = 1;	
+    }
+    else if (keyPressed == "A"){	
+        player.y = -1;	
+    }
+    
+    
+    
+    update: function() {},
+    draw: function() {
+        ctx.fillRect(player.x, player.y, this.width, this.height);
+          
+    }
+    
+}
+
 
 function main() {
     canvas = document.createElement("canvas");
@@ -47,19 +78,29 @@ function main() {
     canvas.height = height;
     ctx = canvas.getContext("2d");
     document.body.appendChild(canvas);
-    console.log("test");
+    
+    init();
+    
+    var loop = function() {
+        update();
+        draw();
+        
+        window.requestAnimationFrame(loop, canvas);
+    }
+    window.requestAnimationFrame(loop, canvas);
 }
 
-function run() {
-
+function init() {
+    player.x = player.width;
+    player.y = player.height;
 }
 
 function update() {
-
+    player.update();
 }
 
-function render() {
-
+function draw() {
+    player.draw();
 }
 
 
