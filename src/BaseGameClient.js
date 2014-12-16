@@ -7,10 +7,15 @@ function init() {
     window.requestAnimFrame(Update);
 };
 
+
+
 function Update()
 {
-    this.ctx.fillStyle = "#FF0000";
-    this.ctx.fillRect(0,0,150,75);
+    Creep.prototype.Init(100,200,10,10);
+    Creep.prototype.DrawCreep();
+    Creep.prototype.Grow();
+    Player.prototype.Init(100,100,50,50);
+    Player.prototype.DrawPlayer();
 
     window.requestAnimFrame(Update);
 };
